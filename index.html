@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>React Blog Website</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #f4f6f8;
+    }
+
+    header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .post {
+      background: white;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script>
+  const e = React.createElement;
+
+  function BlogPost(props) {
+    return e(
+      "div",
+      { className: "post" },
+      e("h2", null, props.title),
+      e("p", null, props.content)
+    );
+  }
+
+  function App() {
+    return e(
+      React.Fragment,
+      null,
+      e(
+        "header",
+        null,
+        e("h1", null, "Virendra's Blog"),
+        e("p", null, "Built using React")
+      ),
+      e(
+        "div",
+        { className: "container" },
+        e(BlogPost, {
+          title: "Getting Started with Competitive Programming",
+          content:
+            "Competitive programming helps build strong problem-solving skills."
+        }),
+        e(BlogPost, {
+          title: "Why I Love React",
+          content:
+            "React allows building UI using reusable components."
+        }),
+        e(BlogPost, {
+          title: "Journey at IIIT Allahabad",
+          content:
+            "Learning, coding, and growing every day as an ECE undergraduate."
+        })
+      )
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById("root")).render(e(App));
+</script>
+
+</body>
+</html>
